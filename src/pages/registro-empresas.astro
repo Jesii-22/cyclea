@@ -3,42 +3,28 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-  <h1 class="text-3xl font-bold mb-6">Registro de Empresas</h1>
-  <form class="max-w-md mx-auto">
-    <input type="text" placeholder="Tipo de tela" class="input-field w-full p-3 border rounded mb-4">
-    <input type="text" placeholder="Color" class="input-field w-full p-3 border rounded mb-4">
-    <input type="number" placeholder="Cantidad" class="input-field w-full p-3 border rounded mb-4">
-    <select class="input-field w-full p-3 border rounded mb-4">
-      <option>Dona</option>
-      <option>Vende</option>
-    </select>
-    <input type="text" placeholder="Ubicación" class="input-field w-full p-3 border rounded mb-4">
-    <button type="submit" class="submit-btn bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600">Enviar</button>
-  </form>
+  <section class="form-section py-20 px-10 bg-gradient-to-r from-blue-100 to-green-100">
+    <h1 class="text-4xl font-bold text-center mb-10 text-gray-800">Registro de Empresas</h1>
+    <form class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
+      <input type="text" placeholder="Tipo de tela" class="input-field w-full p-4 border rounded mb-4 focus:ring-2 focus:ring-blue-500">
+      <input type="text" placeholder="Color" class="input-field w-full p-4 border rounded mb-4">
+      <input type="number" placeholder="Cantidad (kg)" class="input-field w-full p-4 border rounded mb-4">
+      <select class="input-field w-full p-4 border rounded mb-4">
+        <option>Dona</option>
+        <option>Vende</option>
+      </select>
+      <input type="text" placeholder="Ubicación" class="input-field w-full p-4 border rounded mb-4">
+      <button type="submit" class="submit-btn bg-blue-500 text-white px-6 py-3 rounded-lg w-full hover:bg-blue-600">Enviar</button>
+    </form>
+  </section>
 </Layout>
 
 <script>
   import { gsap } from 'gsap';
-
-  // Animación en hover para inputs
-  gsap.set('.input-field', { scale: 1 });
-  gsap.to('.input-field', {
-    scale: 1.05,
-    duration: 0.3,
-    ease: 'power2.out',
-    paused: true,
-    reversed: true,
-  }).reversed(true);
-
-  document.querySelectorAll('.input-field').forEach(el => {
-    el.addEventListener('mouseenter', () => gsap.to('.input-field', { scale: 1.05 }));
-    el.addEventListener('mouseleave', () => gsap.to('.input-field', { scale: 1 }));
-  });
-
-  // Animación en submit
-  document.querySelector('.submit-btn').addEventListener('click', (e) => {
-    e.preventDefault();
-    gsap.to('.submit-btn', { scale: 1.1, duration: 0.2, yoyo: true, repeat: 1 });
-    // Aquí puedes añadir lógica para enviar el formulario
-  });
+  gsap.fromTo('.form-section', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 });
+  gsap.fromTo('.input-field', { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.8, stagger: 0.2 });
+  const submitBtn = document.querySelector('.submit-btn');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', () => gsap.to('.submit-btn', { scale: 1.05, duration: 0.2, yoyo: true, repeat: 1 }));
+  }
 </script>

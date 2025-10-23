@@ -1,0 +1,14 @@
+---
+// Componente para los fragmentos animados
+---
+
+<div class="fragments flex justify-center items-center space-x-8 py-20 bg-gray-50 text-center">  <!-- Centrado vertical y horizontal -->
+  <div class="fragment bg-red-400 w-24 h-24 rounded-full shadow-lg"></div>
+  <div class="fragment bg-blue-400 w-24 h-24 rounded-full shadow-lg"></div>
+  <div class="fragment bg-green-400 w-24 h-24 rounded-full shadow-lg"></div>
+</div>
+
+<script>
+  import { gsap } from 'gsap';
+  gsap.fromTo('.fragment', { opacity: 0, y: 50, rotation: -10 }, { opacity: 1, y: 0, rotation: 0, duration: 1.5, stagger: 0.3, ease: 'elastic.out(1, 0.5)' });
+</script>

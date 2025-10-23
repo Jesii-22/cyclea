@@ -1,0 +1,39 @@
+---
+// Componente para la sección hero
+---
+
+<section class="hero relative bg-gradient-to-br from-green-400 via-blue-500 to-purple-600 text-white py-32 px-10 overflow-hidden">
+  <!-- Fondo animado con ondas (mejorado para visibilidad) -->
+  <div class="wave wave1 absolute inset-0 opacity-30 bg-white"></div>  <!-- Aumenté opacidad para que se vea -->
+  <div class="wave wave2 absolute inset-0 opacity-20 bg-gray-100"></div>
+  
+  <div class="relative z-10 text-center max-w-4xl mx-auto">  <!-- Centrado reforzado -->
+    <h1 class="text-6xl font-extrabold mb-6 drop-shadow-lg text-center">Cyclea</h1>  <!-- Texto centrado -->
+    <p class="text-xl mb-10 leading-relaxed text-center">Conectando empresas y emprendedores para dar nueva vida a los residuos textiles. Promoviendo la economía circular con innovación y sostenibilidad.</p>
+    <a href="/catalogo" class="explore-btn inline-block bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-100 hover:scale-110 transition-all duration-300 shadow-lg text-center">Explora el Catálogo</a>
+  </div>
+</section>
+
+<style>
+  .wave {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 C300,100 600,20 900,60 C1050,80 1200,40 1200,60 L1200,120 L0,120 Z" fill="%23ffffff"></path></svg>') repeat-x;
+    background-size: 1200px 120px;
+    animation: wave-move 10s ease-in-out infinite;
+  }
+  .wave1 { animation-delay: 0s; }
+  .wave2 { animation-delay: 5s; }
+  @keyframes wave-move {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-50px); }
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  gsap.fromTo('.hero h1, .hero p, .explore-btn', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.5, stagger: 0.3 });
+  const btn = document.querySelector('.explore-btn');
+  if (btn) {
+    btn.addEventListener('mouseenter', () => gsap.to(btn, { scale: 1.1, duration: 0.3 }));
+    btn.addEventListener('mouseleave', () => gsap.to(btn, { scale: 1, duration: 0.3 }));
+  }
+</script>

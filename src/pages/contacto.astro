@@ -3,13 +3,14 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-  <h1 class="text-3xl font-bold mb-6">Sobre Cyclea</h1>
-  <p class="info-text">El reciclaje textil reduce residuos y promueve sostenibilidad.</p>
-  <p class="info-text">Conecta actores para una economía circular.</p>
+  <section class="contact py-20 px-10 bg-gray-50 text-center">
+    <h1 class="text-4xl font-bold mb-10">Sobre Cyclea</h1>
+    <p class="text-lg mb-6 max-w-2xl mx-auto">El reciclaje textil reduce residuos y promueve sostenibilidad. Conecta actores para una economía circular.</p>
+    <p class="text-lg">Contacto: info@cyclea.com</p>
+  </section>
 </Layout>
 
 <script>
   import { gsap } from 'gsap';
-
-  gsap.fromTo('.info-text', { opacity: 0 }, { opacity: 1, duration: 1, stagger: 0.5 });
+  gsap.fromTo('.contact p', { opacity: 0 }, { opacity: 1, duration: 1, stagger: 0.5 });
 </script>

@@ -1,22 +1,30 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Cyclea - Economía Circular Textil</title>
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <!-- Navegación -->
+    <nav class="bg-white shadow-md py-4 px-10">
+      <div class="flex justify-between items-center">
+        <a href="/" class="text-2xl font-bold text-green-600">Cyclea</a>
+        <ul class="flex space-x-6">
+          <li><a href="/" class="hover:text-blue-600 transition">Inicio</a></li>
+          <li><a href="/registro-empresas" class="hover:text-blue-600 transition">Registro Empresas</a></li>
+          <li><a href="/registro-emprendedores" class="hover:text-blue-600 transition">Registro Emprendedores</a></li>
+          <li><a href="/catalogo" class="hover:text-blue-600 transition">Catálogo</a></li>
+          <li><a href="/contacto" class="hover:text-blue-600 transition">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html, body { margin: 0; width: 100%; height: 100%; }
 </style>
