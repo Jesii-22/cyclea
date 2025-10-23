@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <h1 class="text-3xl font-bold mb-6">Sobre Cyclea</h1>
+  <p class="info-text">El reciclaje textil reduce residuos y promueve sostenibilidad.</p>
+  <p class="info-text">Conecta actores para una economía circular.</p>
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+
+  gsap.fromTo('.info-text', { opacity: 0 }, { opacity: 1, duration: 1, stagger: 0.5 });
+</script>

@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <h1 class="text-3xl font-bold mb-6">Registro de Empresas</h1>
+  <form class="max-w-md mx-auto">
+    <input type="text" placeholder="Tipo de tela" class="input-field w-full p-3 border rounded mb-4">
+    <input type="text" placeholder="Color" class="input-field w-full p-3 border rounded mb-4">
+    <input type="number" placeholder="Cantidad" class="input-field w-full p-3 border rounded mb-4">
+    <select class="input-field w-full p-3 border rounded mb-4">
+      <option>Dona</option>
+      <option>Vende</option>
+    </select>
+    <input type="text" placeholder="Ubicación" class="input-field w-full p-3 border rounded mb-4">
+    <button type="submit" class="submit-btn bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600">Enviar</button>
+  </form>
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+
+  // Animación en hover para inputs
+  gsap.set('.input-field', { scale: 1 });
+  gsap.to('.input-field', {
+    scale: 1.05,
+    duration: 0.3,
+    ease: 'power2.out',
+    paused: true,
+    reversed: true,
+  }).reversed(true);
+
+  document.querySelectorAll('.input-field').forEach(el => {
+    el.addEventListener('mouseenter', () => gsap.to('.input-field', { scale: 1.05 }));
+    el.addEventListener('mouseleave', () => gsap.to('.input-field', { scale: 1 }));
+  });
+
+  // Animación en submit
+  document.querySelector('.submit-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+    gsap.to('.submit-btn', { scale: 1.1, duration: 0.2, yoyo: true, repeat: 1 });
+    // Aquí puedes añadir lógica para enviar el formulario
+  });
+</script>

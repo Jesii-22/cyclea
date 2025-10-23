@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <h1 class="text-3xl font-bold mb-6">Catálogo de Materiales</h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="card bg-white p-6 rounded-lg shadow-lg">
+      <h3>Oferta: Tela de algodón roja</h3>
+      <p>Cantidad: 50kg</p>
+    </div>
+    <div class="card bg-white p-6 rounded-lg shadow-lg">
+      <h3>Demanda: Tela para mochilas</h3>
+      <p>Color: Azul</p>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+
+  // Animación de entrada para tarjetas
+  gsap.fromTo('.card', { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 1, stagger: 0.3 });
+
+  // Simulación de match: anima una línea conectando tarjetas
+  gsap.to('.card:first-child', {
+    x: 100,
+    duration: 2,
+    ease: 'power2.inOut',
+    repeat: -1,
+    yoyo: true,
+  });
+</script>

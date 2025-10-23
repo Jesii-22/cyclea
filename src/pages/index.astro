@@ -1,19 +1,36 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-  <div class="fragment">Fragmento 1</div>
-  <div class="fragment">Fragmento 2</div>
-  <div class="logo">Logo de Cyclea</div>
-  <!-- Agrega más elementos según necesites -->
+  <section class="hero bg-gradient-to-r from-green-400 to-blue-500 text-white py-20 px-10">
+    <h1 class="text-5xl font-bold mb-4 animate-fade-in">Cyclea</h1>
+    <p class="text-xl mb-8">Conectando empresas y emprendedores para dar nueva vida a los residuos textiles.</p>
+    <button class="bg-white text-blue-500 px-6 py-3 rounded-lg hover:scale-105 transition-transform">Explora</button>
+  </section>
+  <div class="fragments">
+    <div class="fragment bg-red-300 w-20 h-20 rounded-full"></div>
+    <div class="fragment bg-blue-300 w-20 h-20 rounded-full"></div>
+    <div class="fragment bg-green-300 w-20 h-20 rounded-full"></div>
+  </div>
 </Layout>
 
 <script>
   import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
 
-  // Ejecuta la animación cuando el componente se monte
+  // Animación de entrada para fragmentos (simulando telas)
   gsap.fromTo('.fragment', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, stagger: 0.2 });
-  gsap.to('.logo', { scale: 1, duration: 1, delay: 1 });
+
+  // Animación al scrollear
+  gsap.to('.hero', {
+    scrollTrigger: {
+      trigger: '.hero',
+      start: 'top center',
+      end: 'bottom center',
+      scrub: true,
+    },
+    y: -50,
+  });
 </script>
